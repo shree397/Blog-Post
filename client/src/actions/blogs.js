@@ -88,12 +88,17 @@ export const addLike = id => async dispatch => {
 export const removeLike = id => async dispatch => {
   try {
     const res = await axios.put(`/api/blogs/unlike/${id}`);
-
+    
     dispatch({
       type: UPDATE_LIKES,
       payload: { id, likes: res.data }
     });
   } catch (err) {
+    const errors = err.response.data;
+    console.log(err.response.data);
+    if (errors) {
+      dispatch(setAlert(errors.msg, 'danger'));
+    }
     dispatch({
       type: BLOGS_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }

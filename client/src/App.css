@@ -212,6 +212,9 @@ ul {
   width: 90%;
   background-color: #fff;
 }
+.comment-div h1 {
+  margin: 0.5rem;
+}
 .small {
   color: rgb(100, 95, 95);
   font-size: 0.8rem;

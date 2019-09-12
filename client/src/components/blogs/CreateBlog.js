@@ -30,7 +30,6 @@ const CreateBlog = ({
   const onSubmit = e => {
     e.preventDefault();
     addBlog(formData);
-    setAlert('Submitted', 'danger');
     setFormData({ title: '', category: '', content: '' });
   };
 

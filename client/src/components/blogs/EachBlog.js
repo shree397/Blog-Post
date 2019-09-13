@@ -45,7 +45,7 @@ const EachBlog = ({
             </h3>
             <p className='a'>
               Category: {''}
-              <Link to={`/category/${category}`}> {category} </Link>
+              <Link to={`/category/${category}`} className='d'> {category} </Link>
             </p>
           </div>
         </div>

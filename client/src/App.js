@@ -9,6 +9,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import Blogs from './components/blogs/Blogs';
 import SingleBlog from './components/blog/SingleBlog';
 import Author from './components/blog/Author';
+import Category from './components/blog/Category';
 import CreateBlog from './components/blogs/CreateBlog';
 import MyBlog from './components/blogs/MyBlog';
 // Redux
@@ -42,7 +43,8 @@ const App = () => {
             <PrivateRoute exact path='/createblog' component={CreateBlog} />
             <PrivateRoute exact path='/myblog' component={MyBlog} />
             <PrivateRoute exact path='/posts/:id' component={SingleBlog} />
-            <PrivateRoute exact path='/author/:id' component={Author} />
+            <PrivateRoute exact path='/author/:blogger' component={Author} />
+            <PrivateRoute exact path='/category/:name' component={Category} />
           </Switch>
         </Fragment>
       </Router>

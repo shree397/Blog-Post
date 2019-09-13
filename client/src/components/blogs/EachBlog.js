@@ -39,12 +39,13 @@ const EachBlog = ({
             </Link>
             <h3 className='a'>
               Author:{' '}
-              <Link to={`/author/${user}`} className='b'>
+              <Link to={`/author/${author}`} className='b'>
                 {author}
               </Link>
             </h3>
             <p className='a'>
-              Category: {''} {category}
+              Category: {''}
+              <Link to={`/category/${category}`}> {category} </Link>
             </p>
           </div>
         </div>

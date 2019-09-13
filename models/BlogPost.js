@@ -53,14 +53,6 @@ const BlogPostSchema = new mongoose.Schema({
       }
     }
   ],
-  dislikes: [
-    {
-      user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
-      }
-    }
-  ],
   date: {
     type: Date,
     default: Date.now

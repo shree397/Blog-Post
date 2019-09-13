@@ -1,19 +1,18 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { authorBlog, getBlogs } from '../../actions/blogs';
+import { getBlogs } from '../../actions/blogs';
 import { Link } from 'react-router-dom';
 import EachBlog from '../blogs/EachBlog';
 
-const Author = ({ authorBlog, getBlogs, blogs: { blogs, loading }, match }) => {
-  const user = match.params.id;
-  console.log(user);
+const Author = ({ getBlogs, blogs: { blogs, loading }, match }) => {
+  const name = match.params.blogger;
+
   useEffect(() => {
     getBlogs();
   }, []);
-  let blog;
 
-  return loading || blog === null ? (
+  return loading || blogs === null ? (
     <div>...loading</div>
   ) : (
     <Fragment>
@@ -22,7 +21,7 @@ const Author = ({ authorBlog, getBlogs, blogs: { blogs, loading }, match }) => {
       </Link>
       <div className='posts'>
         {blogs
-          .filter(post => post.user === user)
+          .filter(post => post.author === name)
           .map(post => (
             <EachBlog post={post} />
           ))}
@@ -32,7 +31,7 @@ const Author = ({ authorBlog, getBlogs, blogs: { blogs, loading }, match }) => {
 };
 
 Author.propTypes = {
-  authorBlog: PropTypes.func.isRequired,
+  getBlogs: PropTypes.func.isRequired,
   blogs: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
@@ -41,5 +40,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { authorBlog, getBlogs }
+  { getBlogs }
 )(Author);

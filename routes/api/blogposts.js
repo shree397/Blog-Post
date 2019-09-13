@@ -265,21 +265,4 @@ router.put('/unlike/:id', auth, async (req, res) => {
   }
 });
 
-// @route    PUT api/blogs/search
-// @desc     search
-// @access   Public
-router.get('/post/search', async (req, res) => {
-  const { posts } = req.body;
-  let categories = await BlogPosts.find();
-  if (categories) {
-    if (categories.filter(post => post.author === posts).length !== 0)
-      res.json(categories.filter(post => post.author === posts));
-    else if (categories.filter(post => post.category === posts).length !== 0)
-      res.json(categories.filter(post => post.category === posts));
-    else if (categories.filter(post => post.title === posts).length !== 0)
-      res.json(categories.filter(post => post.title === posts));
-    else res.status(400).json({ errors: [{ msg: 'no posts on your search' }] });
-  } else res.status(400).json({ errors: [{ msg: 'no posts on your search' }] });
-});
-
 module.exports = router;
